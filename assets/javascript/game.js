@@ -31,6 +31,7 @@ var right = 0;
 var wrong = 0;
 var i = -1;
 var click;
+var start;
 //timer function 
 function time() {
     timer--;
@@ -43,11 +44,12 @@ function time() {
         setTimeout(display, 4000)
     } else if (timer === 0) {
         display(i)
-    }
+    } else if (i >= all.length)
+    gameOver(start); 
 }
 //on click start 
 $('#start').on('click', function () {
-    setInterval(time, 1000);
+    start = setInterval(time, 1000);
     display(i)
 })
 
@@ -56,7 +58,6 @@ function display() {
     i++
     console.log(i)
     timer = 10
-    $('#timer').html(timer)
     $('#question').html(all[i].question)
     $('#answer').html('')
     for (var n = 0; n < all[i].answer.length; n++) {
@@ -91,8 +92,8 @@ function transition(i) {
 
 
 //end of game 
-function gameOver (time) {
-    clearInterval(time)
+function gameOver (clear) {
+    clearInterval(clear)
     $('#timer').html('')
     $('#question').html(`<p>right: ${right}</p>`)
     $('#answer').html(`<p>wrong: ${wrong}</p>`)
