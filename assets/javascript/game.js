@@ -35,14 +35,14 @@ var click;
 function time() {
     timer--;
     $('#timer').html(timer)
-    if (timer === 0 && click !== $('#answers')) {
+    if (timer === 0 && click !== $('#answer')) {
         console.log(click)
         wrong++;
         console.log("no answer")
         transition(i)
         setTimeout(display, 4000)
     } else if (timer === 0) {
-        display()
+        display(i)
     }
 }
 //on click start 
@@ -58,17 +58,15 @@ function display() {
     timer = 10
     $('#timer').html(timer)
     $('#question').html(all[i].question)
-    $('#answers').html('')
+    $('#answer').html('')
     for (var n = 0; n < all[i].answer.length; n++) {
-        $('#answers').append(`<div class="answer" data-attribute"${all[i].answer[n]}" id="${all[i].answer[n]}">${all[i].answer[n]}</div>`)
+        $('#answer').append(`<button class="answer" data-attribute="${all[i].answer[n]}" id="${all[i].answer[n]}">${all[i].answer[n]}</button>`)
     }
 }
 //on click for answers 
-$('.answer').on('click', function (event) {
-    click = $(this).attr('id')
-    specific = $(this).attr('data-attribute')
+$('#answer').on('click', function (event) {
+    click = $(event.target).attr('id')
     console.log(click)
-    console.log(specific)
     if (click === correctAnswer[i]) {
         console.log('true')
         right++;
@@ -87,7 +85,15 @@ function transition(i) {
     timer = 5;
     $('#timer').html('Answer')
     $('#question').html(`<p>${all[i].explanation}</p>`)
-    $('#answers').html(`<img url="${all[i].picture}">`)
+    $('#answer').html(`<img url="${all[i].picture}">`)
+    console.log(`right: ${right}, wrong: ${wrong}`)
 }
 
+
 //end of game 
+function gameOver (time) {
+    clearInterval(time)
+    $('#timer').html('')
+    $('#question').html(`<p>right: ${right}</p>`)
+    $('#answer').html(`<p>wrong: ${wrong}</p>`)
+}
