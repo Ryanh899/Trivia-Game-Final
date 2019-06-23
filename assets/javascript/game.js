@@ -35,7 +35,7 @@ function disapprove () {
     badJob = disapproval[Math.floor(Math.random()*disapproval.length)];
     return badJob
 }
-var timer = 10;
+var timer = 30;
 var right = 0;
 var wrong = 0;
 var i = -1;
@@ -50,6 +50,7 @@ function time() {
         wrong++;
         console.log("no answer")
         transition(i)
+        $('#phrase').html(`You miss 100% of the shots you don't take`)
         setTimeout(display, 4000)
     } else if (timer === 0) {
         display(i)
@@ -67,9 +68,9 @@ function display() {
     $('#phrase').html('Good Luck!')
     i++
     $('#timer').show()
-    $('#timer').html(10)
+    $('#timer').html(30)
     console.log(i)
-    timer = 10
+    timer = 30
     $('#question').html(all[i].question)
     $('#answer').html('')
     for (var n = 0; n < all[i].answer.length; n++) {
