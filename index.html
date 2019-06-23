@@ -6,19 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="./assets/css/reset.css" rel="">
+    <link href="./assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-<div id="timer"></div>
-<button id="start">start</button>
-<div class="container" id="container">
-<div id="question"></div>
-<div id="answer"></div>
+    <div class="jumbotron jumbotron-fluid text-center p-2">
+        <div class="container">
+            <h1 class="display-4">NFL Trivia</h1>
+            <p class="lead">You'll have 30 seconds to answer each question</p>
+            <p class="lead" id="phrase">Good Luck!</p>
+            <div id="timer">10</div>
+        </div>
+    </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="./assets/javascript/game.js"></script>
+    <div class="container text-center">
+        <button id="start">start</button>
+        <div class="container" id="container">
+            <div id="question"></div>
+            <div id="answer"></div>
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+            <script src="./assets/javascript/game.js"></script>
+        </div>
 </body>
 
 </html>
